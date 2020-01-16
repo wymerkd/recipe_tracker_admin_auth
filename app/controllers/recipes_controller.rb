@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
     @rating = Rating.find(params[:rating_id])
     @recipe = @rating.recipes.new(recipe_params)
     if @recipe.save
+      flash[:notice] = "Recipe succesfully added! MMMMMMmmmmmm!"
       redirect_to rating_path(@rating)
     else
       render :new
@@ -31,6 +32,7 @@ class RecipesController < ApplicationController
     @rating = Rating.find(params[:rating_id])
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
+      flash[:alert] = "You updated that!"
       redirect_to rating_path(@recipe.rating)
     else
       render :edit
