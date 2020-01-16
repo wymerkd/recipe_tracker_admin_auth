@@ -9,11 +9,29 @@
 
 Recipe.destroy_all
 rating = Rating.create(difficulty: "easy")
-
-50.times do |index|
-  rating.recipes.create!(title: Faker::Food.dish,
-                        instructions: Faker::Food.description().chop,
-                        ingredients: Faker::Food.ingredient().chop, rating_id: nil)
+ingredient1 = []
+5.times do |i|
+  ingredient1.push(Faker::Food.ingredient())
 end
 
-p "Created #{Recipe.count} spices"
+20.times do |index|
+  rating.recipes.create!(title: Faker::Food.dish,
+                        instructions: Faker::Food.description(),
+                        ingredients: ingredient1, rating_id: nil)
+end
+
+rating2 = Rating.create(difficulty: "medium")
+20.times do |index|
+  rating2.recipes.create!(title: Faker::Food.dish,
+                        instructions: Faker::Food.description(),
+                        ingredients: ingredient1, rating_id: nil)
+end
+
+rating3 = Rating.create(difficulty: "hard")
+20.times do |index|
+  rating3.recipes.create!(title: Faker::Food.dish,
+                        instructions: Faker::Food.description(),
+                        ingredients: ingredient1, rating_id: nil)
+end
+
+p "Created #{Recipe.count} recipes"

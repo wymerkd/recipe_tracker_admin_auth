@@ -1,6 +1,13 @@
 <h1>Recipe: <%= @recipe.title %></h1>
 <h2>Rating: <%= @rating.difficulty %></h2>
-<h3>Ingredients: <%= @recipe.ingredients %></h3>
+  <h4>Ingredients:</h4>
+  <ul>
+  <% @recipe.ingredients.gsub(/\W/, " ").split(" ").each do |ingredient| %>
+      <li>
+        <%= ingredient %>
+      </li>
+  <% end %>
+</ul>
 <h3>Instructions: <%= @recipe.instructions %></h3>
 
 <p><%= link_to "Edit recipe", edit_rating_recipe_path(@rating, @recipe) %></p>

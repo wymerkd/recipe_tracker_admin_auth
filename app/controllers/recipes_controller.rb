@@ -40,9 +40,9 @@ class RecipesController < ApplicationController
   end
 
   def destroy
-    @recipe = Rating.find(params[:id])
+    @recipe = Recipe.find(params[:id])
     @recipe.destroy
-    redirect_to album_path(@recipe.album)
+    redirect_to rating_path(@recipe.rating)
   end
 
   private

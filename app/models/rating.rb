@@ -1,6 +1,5 @@
 class Rating < ApplicationRecord
-  has_many :recipes
-# , dependent: :destroy
+  has_many :recipes, dependent: :destroy
 
 before_save(:titleize_rating)
 
