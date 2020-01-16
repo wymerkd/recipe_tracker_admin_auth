@@ -28,7 +28,7 @@ class RatingsController < ApplicationController
   def show
     @rating = Rating.find(params[:id])
     if params[:search]
-      @recipes = @rating.recipes.search(params[:sea])
+      @recipes = @rating.recipes.search(params[:search])
     else
       @recipes = @rating.recipes
     end
