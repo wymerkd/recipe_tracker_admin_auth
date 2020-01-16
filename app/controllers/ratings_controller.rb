@@ -27,6 +27,11 @@ class RatingsController < ApplicationController
 
   def show
     @rating = Rating.find(params[:id])
+    if params[:search]
+      @recipes = @rating.recipes.search(params[:sea])
+    else
+      @recipes = @rating.recipes
+    end
     render :show
   end
 

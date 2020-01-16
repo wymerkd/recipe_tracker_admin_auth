@@ -1,9 +1,14 @@
 <h1><%= @rating.difficulty %></h1>
+<form>
+  <label for="">Search by title</label>
+  <input type="text" name="sea">
+  <button type="submit" name="button">go</button>
+</form>
 
-<% if @rating.recipes.any? %>
+<% if @recipes.any? %>
   <h4>Here are the recipes for this rating:</h4>
 
-  <% @rating.recipes.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
     <ul>
       <li>
         <%= link_to recipe.title, rating_recipe_path(@rating, recipe) %>
