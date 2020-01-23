@@ -1,4 +1,7 @@
 class RecipesController < ApplicationController
+  before_action :authorize, only: [:update]
+  before_action :user_admin, only: [:destroy]
+
   def new
     @rating = Rating.find(params[:rating_id])
     @recipe = @rating.recipes.new
