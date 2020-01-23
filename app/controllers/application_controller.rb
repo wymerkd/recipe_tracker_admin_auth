@@ -8,19 +8,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def user_admin
-    binding.pry
-    if @current_user.admin = false
-      flash[:alert] = "You need to be an admin to perform that action."
-      redirect_to '/'
-    end
-  end
-
-
   def authorize
     if !current_user
-      flash[:alert] = "You are not logged in."
-      redirect_to '/'
+      flash[:alert] = "You need to log in."
     end
   end
+
+  def user_admin
+    if !current_user
+      flash[:alert] = "You are not logged in."
+    elsif current_user.admin = false
+      flash[:alert] = "You need to be an admin to perform that action."
+    end
+  end
+
 end
